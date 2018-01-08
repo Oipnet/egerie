@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif;
+$fa-font-path: "~font-awesome/fonts";
+
+@import '~font-awesome/css/font-awesome.css';
+@import '~bootstrap/scss/bootstrap';
+@import '~@fengyuanchen/datepicker/dist/datepicker.css';
+
+.logo {
+  height: 200px;
+  margin: 0 auto;
+  border-bottom: 1px solid;
+
+  a {
+    height: 200px;
+    width: 100%;
+    line-height: 100px;
+    padding: 0;
+  }
+}
+
+.heading {
+  padding: 0;
+  border-top: 2px solid #cccccc;
+
+  .jumbotron {
+    background-color: #fff;
+    border-radius: 0;
+    padding: 4rem 0;
+    margin-bottom: 25px;
+    padding-bottom: 0;
+
+    h1 {
+      border-top: 1px solid #000000;
+      padding: 15px 0;
+    }
+
+    #jumbo_more {
+      display: none;
+    }
+  }
+}
+
+.about {
+  margin-top: 20px;
+
+  .card-title {
+    text-transform: uppercase;
+  }
+
+  .card-text {
+    color: #aeaeae!important;
+  }
+
+  .card {
+    padding: 30px;
+    color: #ffffff;
+  }
+
+  .about_about {
+    background-color: #272727;
+  }
+
+  .about_step {
+    background-color: #3d3d3d;
+  }
+
+  .about_participate {
+    background-color: #565656;
+  }
+
+  .btn-secondary {
+    background: none;
+  }
+}
+
+footer {
+  padding-top: 20px;
+  margin: 20px 0;
+  border-top: 1px solid #000000;
+
+  .footer_logo {
+    img {
+      height: 200px;
+    }
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 300;
+  }
+
+  .list-group {
+    .list-group-item {
+      border: none;
+      padding: 5px;
+
+      a {
+        color: #cccccc!important;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.17.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production"
+    },
+    "dependencies": {
+        "@fengyuanchen/datepicker": "^0.6.4",
+        "bootstrap": "^4.0.0-beta.3",
+        "dropzone": "^5.2.0",
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.2.1",
+        "node-sass": "^4.7.2",
+        "popper.js": "^1.12.9",
+        "sass-loader": "^6.0.6",
+        "webpack-notifier": "^1.5.0"
+    }
+}

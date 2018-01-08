@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container heading">
+        <div class="row">
+            <div class="col-md-9 offset-md-3">
+                {{ form_start(form) }}
+                    <button class="btn btn-secondary btn-block">Envoyer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
