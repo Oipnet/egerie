@@ -20,7 +20,7 @@ class ContactSubscriber implements EventSubscriberInterface
 
         $message = (new \Swift_Message("Nouvelle demande de contact"))
             ->setFrom($contact->getAuthor())
-            ->setTo('contact@sun7boulevard.com')
+            ->setTo('emilie.sun7@yahoo.fr')
             ->setBody($this->twig->render('emails/admin/contact.html.twig', compact('contact')), 'text/html');
 
         $this->mailer->send($message);
@@ -31,7 +31,7 @@ class ContactSubscriber implements EventSubscriberInterface
         $contact = $event->getContact();
 
         $message = (new \Swift_Message("Demande de contact"))
-            ->setFrom('contact@sun7boulevard.com')
+            ->setFrom('emilie.sun7@yahoo.fr')
             ->setTo($contact->getAuthor())
             ->setBody($this->twig->render('emails/contact.html.twig', compact('contact')), 'text/html');
 

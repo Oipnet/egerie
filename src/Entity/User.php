@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ModelRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class User implements AdvancedUserInterface, \Serializable
@@ -99,6 +99,13 @@ class User implements AdvancedUserInterface, \Serializable
     private $isAdmin;
 
     /**
+     * @var bool $isJury
+     *
+     * @ORM\Column(name="is_jury", type="boolean")
+     */
+    private $isJury;
+
+    /**
      * @var Candidate $candidate
      *
      * @ORM\OneToOne(targetEntity="App\Entity\Candidate", cascade={"persist", "remove"})
@@ -130,6 +137,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->isActive = false;
         $this->isAdmin = false;
+        $this->isJury = false;
         $this->confirmationToken = bin2hex(openssl_random_pseudo_bytes(50));
     }
 
@@ -166,6 +174,14 @@ class User implements AdvancedUserInterface, \Serializable
     public function getFirstname(): ?string
     {
         return $this->firstname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullname(): ?string
+    {
+        return $this->getFirstname().' '.$this->getLastname();
     }
 
     /**
@@ -243,7 +259,8 @@ class User implements AdvancedUserInterface, \Serializable
             $this->getEmail(),
             $this->getPassword(),
             $this->isActive(),
-            $this->isAdmin()
+            $this->isAdmin(),
+            $this->isJury()
         ]);
     }
 
@@ -263,7 +280,8 @@ class User implements AdvancedUserInterface, \Serializable
             $this->email,
             $this->password,
             $this->isActive,
-            $this->isAdmin
+            $this->isAdmin,
+            $this->isJury
         ) = unserialize($serialized);
     }
 
@@ -285,7 +303,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        return $this->isAdmin()?['ROLE_ADMIN']:['ROLE_USER'];
+        return $this->isAdmin()?['ROLE_ADMIN']:($this->isJury()?['ROLE_JURY']:['ROLE_USER']);
     }
 
     /**
@@ -571,9 +589,9 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @return mixed
+     * @return Candidate
      */
-    public function getCandidate()
+    public function getCandidate(): Candidate
     {
         return $this->candidate;
     }
@@ -586,6 +604,25 @@ class User implements AdvancedUserInterface, \Serializable
     public function setCandidate($candidate): User
     {
         $this->candidate = $candidate;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isJury(): bool
+    {
+        return $this->isJury;
+    }
+
+    /**
+     * @param bool $isJury
+     *
+     * @return User
+     */
+    public function setIsJury(bool $isJury): User
+    {
+        $this->isJury = $isJury;
         return $this;
     }
 }

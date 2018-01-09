@@ -4,6 +4,7 @@ namespace App\Controller\User;
 
 use App\Entity\Candidate;
 use App\Entity\Media;
+use App\Entity\User;
 use App\Form\Type\CandidateType;
 use App\Service\FileUploader;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -57,7 +58,7 @@ class CandidateController
      * @Route(path="user/participate", name="user_candidate")
      * @Security("has_role('ROLE_USER')")
      */
-    public function __invoke(Request $request)
+    public function participate(Request $request)
     {
         $user = $this->token->getToken()->getUser();
 
@@ -101,4 +102,20 @@ class CandidateController
         return Response::create($this->twig->render('user/candidate.html.twig', [ 'form' => $form->createView()] ));
     }
 
+    /**
+     * @Route(path="user/toggle/{user}", name="user_toggle")
+     * @Security("has_role('ROLE_JURY')")
+     */
+    public function toggle(User $user)
+    {
+        $user->getCandidate()->setIsSelected(
+            ! $user->getCandidate()->isSelected()
+        );
+
+        $em = $this->doctrine->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return new RedirectResponse($this->router->generate('jury_selection'));
+    }
 }

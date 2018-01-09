@@ -28,7 +28,7 @@ class UserRegisterSubscriber implements EventSubscriberInterface
         $user = $event->getUser();
 
         $message = (new \Swift_Message("Confirmation d'inscription"))
-            ->setFrom('contact@sun7boulevard.com')
+            ->setFrom('emilie.sun7@yahoo.fr')
             ->setTo($user->getEmail())
             ->setBody($this->twig->render('emails/registration.html.twig', compact('user')), 'text/html');
 

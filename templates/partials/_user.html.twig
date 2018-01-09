@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+    <img src="{{ asset('uploads/') ~ user.candidate.portrait.filename }}" alt="" class="card-img-top">
+    <div class="card-body">
+        <div class="card-title">{{ user.fullname }}</div>
+        <a href="" class="btn btn-secondary">Voir le profil</a>
+        {% if is_granted('ROLE_JURY') %}
+            {% if not user.candidate.isSelected %}
+                <a href="{{ path('user_toggle', {'user': user.id}) }}" class="btn btn-success">Selectioner</a>
+            {%  else %}
+                <a href="{{ path('user_toggle', {'user': user.id}) }}" class="btn btn-danger">Dé-Selectioner</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>

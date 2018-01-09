@@ -44,9 +44,17 @@ class Candidate
      */
     private $medias;
 
+    /**
+     * @var boolean $isSelected
+     *
+     * @ORM\Column(name="is_selected", type="boolean")
+     */
+    private $isSelected;
+
     public function __construct()
     {
         $this->medias = new ArrayCollection();
+        $this->isSelected = false;
     }
 
     /**
@@ -157,5 +165,32 @@ class Candidate
         return $this->getMedias()->filter(function (Media $media) {
             return $media->getType() === Media::PLEIN_PIED_TYPE;
         })->first();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSelected(): ?bool
+    {
+        return $this->isSelected;
+    }
+
+    /**
+     * @param bool $isSelected
+     *
+     * @return Candidate
+     */
+    public function setIsSelected(bool $isSelected): Candidate
+    {
+        $this->isSelected = $isSelected;
+        return $this;
     }
 }
