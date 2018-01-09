@@ -3,10 +3,17 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif;
 $fa-font-path: "~font-awesome/fonts";
+$text-color: #fff;
+$body-bg: #000;
+$navbar-light-color: #fff;
+$navbar-light-hover-color:          rgba(#fff, .7) !default;
+$navbar-light-active-color:         rgba(#fff, .9) !default;
+$navbar-light-disabled-color:       rgba(#fff, .3) !default;
 
 @import '~font-awesome/css/font-awesome.css';
 @import '~bootstrap/scss/bootstrap';
 @import '~@fengyuanchen/datepicker/dist/datepicker.css';
+
 
 .logo {
   height: 200px;
