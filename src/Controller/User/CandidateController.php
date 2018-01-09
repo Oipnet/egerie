@@ -78,11 +78,21 @@ class CandidateController
             $mediaPortrait->setPath($this->fileUploader->getTargetDir());
             $mediaPortrait->setCandidate($candidate);
 
+            $fullBody = $request->files->get('full_body');
+            $fullBodyName = $this->fileUploader->upload($fullBody);
+
+            $mediaFullBody = new Media();
+            $mediaFullBody->setFilename($fullBodyName);
+            $mediaFullBody->setType(Media::PLEIN_PIED_TYPE);
+            $mediaFullBody->setPath($this->fileUploader->getTargetDir());
+            $mediaFullBody->setCandidate($candidate);
+
             $user->setCandidate($candidate);
 
             $em = $this->doctrine->getManager();
             $em->persist($user);
             $em->persist($mediaPortrait);
+            $em->persist($mediaFullBody);
             $em->flush();
 
             return new RedirectResponse($this->router->generate('homepage'));

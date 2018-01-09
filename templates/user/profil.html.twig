@@ -7,7 +7,16 @@
         {% endif %}
         <h1 class="text-center">Mon profil</h1>
         <div class="row">
-            <div class="col-md-9 offset-md-3 text-center">
+            <div class="col-md-3">
+                {% if user.candidate %}
+                    <img
+                        src="{{ asset('uploads/') ~ user.candidate.portrait.filename }}"
+                        alt=""
+                        class="img-thumbnail"
+                    >
+                {% endif %}
+            </div>
+            <div class="col-md-9 text-center">
                 <div class="row">
                     <div class="col-3">Nom :</div>
                     <div class="col-9">{{ user.lastName }}</div>
@@ -25,7 +34,14 @@
         {% if user.candidate %}
             <h2 class="text-center">Ma candidature</h2>
             <div class="row">
-                <div class="col-md-9 offset-md-3">
+                <div class="col-md-3">
+                    <img
+                        src="{{ asset('uploads/') ~ user.candidate.fullBody.filename }}"
+                        alt=""
+                        class="img-thumbnail"
+                    >
+                </div>
+                <div class="col-md-9">
                     <div class="row">
                         <div class="col-6">
                             <div class="row">

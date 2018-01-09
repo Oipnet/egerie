@@ -145,10 +145,17 @@ class Candidate
         return $this;
     }
 
-    public function addMedia(Media $media): Candidate
+    public function getPortrait(): Media
     {
-        $this->medias->add($media);
+        return $this->getMedias()->filter(function (Media $media) {
+            return $media->getType() === Media::PORTRAIT_TYPE;
+        })->first();
+    }
 
-        return $this;
+    public function getFullBody(): Media
+    {
+        return $this->getMedias()->filter(function (Media $media) {
+            return $media->getType() === Media::PLEIN_PIED_TYPE;
+        })->first();
     }
 }

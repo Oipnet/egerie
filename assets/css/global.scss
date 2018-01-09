@@ -25,6 +25,10 @@ $fa-font-path: "~font-awesome/fonts";
   padding: 0;
   border-top: 2px solid #cccccc;
 
+  p:first-child {
+    padding-top: 25px;
+  }
+
   .jumbotron {
     background-color: #fff;
     border-radius: 0;

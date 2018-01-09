@@ -131,4 +131,9 @@ class Media
 
         return $this;
     }
+
+    public function getSrc(): ?string
+    {
+        return $this->getPath().DIRECTORY_SEPARATOR.$this->getFilename();
+    }
 }

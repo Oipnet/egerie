@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Twig\Environment;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class ProfilController
 {
@@ -26,6 +27,7 @@ class ProfilController
 
     /**
      * @Route(path="/user/profil", name="user_profil")
+     * @Security("has_role('ROLE_USER')")
      */
     public function index()
     {

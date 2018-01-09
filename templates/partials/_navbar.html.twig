@@ -1,5 +1,5 @@
 <nav class="container navbar navbar-light bg-faded logo">
-    <a href="#" class="navbar-brand">
+    <a href="{{ path('homepage') }}" class="navbar-brand">
         <img class="mx-auto d-block" src="{{ asset('build/images/casting-logo.png') }}" alt="Casting sun7">
     </a>
 </nav>
@@ -21,7 +21,7 @@
                     {% endif %}
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Présentation</a>
+                    <a href="{{ path('presentation') }}" class="nav-link">Présentation</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Egérie</a>
