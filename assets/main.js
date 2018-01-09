@@ -1,8 +1,9 @@
 var $ = require('jquery');
 require('bootstrap');
-require('@fengyuanchen/datepicker')
+require('@fengyuanchen/datepicker');
 require('./css/global.scss');
-require('./img/casting-logo.png')
+require('./img/casting-logo.png');
+require('./img/favicon.ico');
 
 $(document).ready(function () {
     $('#jumbo_more_btn').click(e => {
