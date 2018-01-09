@@ -2,7 +2,8 @@
 
 {% block body %}
     <div class="container">
-        {{ form_start(form) }}
+        {{ form_start(form, {'multipart': true}) }}
+            <input type="file" name="portrait">
             <button class="btn btn-secondary btn-block">Envoyer ma candidature</button>
         {{ form_end(form) }}
     </div>

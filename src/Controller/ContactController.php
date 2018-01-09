@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Event\ContactEvent;
-use App\Form\ContactType;
+use App\Form\Type\ContactType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\FormFactoryInterface;

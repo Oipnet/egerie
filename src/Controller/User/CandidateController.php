@@ -3,7 +3,9 @@
 namespace App\Controller\User;
 
 use App\Entity\Candidate;
-use App\Form\CandidateType;
+use App\Entity\Media;
+use App\Form\Type\CandidateType;
+use App\Service\FileUploader;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -29,14 +31,26 @@ class CandidateController
      * @var RouterInterface
      */
     private $router;
+    /**
+     * @var FileUploader
+     */
+    private $fileUploader;
 
-    public function __construct(TokenStorageInterface $token, RouterInterface $router, RegistryInterface $doctrine, Environment $twig, FormFactoryInterface $form)
+    public function __construct(
+        TokenStorageInterface $token,
+        RouterInterface $router,
+        RegistryInterface $doctrine,
+        Environment $twig,
+        FormFactoryInterface $form,
+        FileUploader $fileUploader
+    )
     {
         $this->token = $token;
         $this->twig = $twig;
         $this->form = $form;
         $this->doctrine = $doctrine;
         $this->router = $router;
+        $this->fileUploader = $fileUploader;
     }
 
     /**
@@ -55,10 +69,20 @@ class CandidateController
         if ($form->isSubmitted() && $form->isValid()) {
             $candidate = $form->getData();
 
+            $portrait = $request->files->get('portrait');
+            $portraitName = $this->fileUploader->upload($portrait);
+
+            $mediaPortrait = new Media();
+            $mediaPortrait->setFilename($portraitName);
+            $mediaPortrait->setType(Media::PORTRAIT_TYPE);
+            $mediaPortrait->setPath($this->fileUploader->getTargetDir());
+            $mediaPortrait->setCandidate($candidate);
+
             $user->setCandidate($candidate);
 
             $em = $this->doctrine->getManager();
             $em->persist($user);
+            $em->persist($mediaPortrait);
             $em->flush();
 
             return new RedirectResponse($this->router->generate('homepage'));

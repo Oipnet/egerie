@@ -10,3 +10,4 @@
 /node_modules/
 /public/build/
 ###< symfony/webpack-encore-pack ###
+/public/uploads/

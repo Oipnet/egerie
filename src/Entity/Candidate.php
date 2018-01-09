@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +38,16 @@ class Candidate
      * @ORM\ManyToOne(targetEntity="App\Entity\Hair", inversedBy="candidates")
      */
     private $hair;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="candidate")
+     */
+    private $medias;
+
+    public function __construct()
+    {
+        $this->medias = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -111,6 +122,33 @@ class Candidate
     public function setHair($hair): Candidate
     {
         $this->hair = $hair;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+
+    /**
+     * @param mixed $medias
+     *
+     * @return Candidate
+     */
+    public function setMedias($medias): Candidate
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+
+    public function addMedia(Media $media): Candidate
+    {
+        $this->medias->add($media);
+
         return $this;
     }
 }

@@ -3,7 +3,7 @@ namespace App\Controller\Security;
 
 use App\Entity\User;
 use App\Event\UserRegisterEvent;
-use App\Form\RegisterType;
+use App\Form\Type\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
