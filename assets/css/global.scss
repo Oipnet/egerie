@@ -3,12 +3,21 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif;
 $fa-font-path: "~font-awesome/fonts";
-$text-color: #fff;
-$body-bg: #000;
-$navbar-light-color: #fff;
-$navbar-light-hover-color:          rgba(#fff, .7) !default;
-$navbar-light-active-color:         rgba(#fff, .9) !default;
-$navbar-light-disabled-color:       rgba(#fff, .3) !default;
+
+$color-pink: #E2007A;
+$color-white: #fff;
+$color-black: #000;
+$color-grey: #cccccc;
+
+$text-color: $color-white;
+$body-bg: $color-black;
+$body-color: $text-color;
+$navbar-light-color: $color-white;
+$navbar-light-hover-color:          rgba($navbar-light-color, .7) !default;
+$navbar-light-active-color:         rgba($navbar-light-color, .9) !default;
+$navbar-light-disabled-color:       rgba($navbar-light-color, .3) !default;
+$jumbotron-bg: $body-bg;
+$list-group-bg: $color-black;
 
 @import '~font-awesome/css/font-awesome.css';
 @import '~bootstrap/scss/bootstrap';
@@ -31,18 +40,19 @@ $navbar-light-disabled-color:       rgba(#fff, .3) !default;
 .heading {
   padding: 0;
   padding-top: 25px;
-  border-top: 2px solid #cccccc;
+  border-top: 2px solid $color-grey;
 
   .jumbotron {
-    background-color: #fff;
     border-radius: 0;
     padding: 4rem 0;
     margin-bottom: 25px;
     padding-bottom: 0;
+    color: $color-white;
 
     h1 {
-      border-top: 1px solid #000000;
+      border-top: 1px solid $color-black;
       padding: 15px 0;
+      color: $color-pink;
     }
 
     #jumbo_more {
@@ -64,7 +74,7 @@ $navbar-light-disabled-color:       rgba(#fff, .3) !default;
 
   .card {
     padding: 30px;
-    color: #ffffff;
+    color: $color-white;
   }
 
   .about_about {
@@ -87,7 +97,7 @@ $navbar-light-disabled-color:       rgba(#fff, .3) !default;
 footer {
   padding-top: 20px;
   margin: 20px 0;
-  border-top: 1px solid #000000;
+  border-top: 1px solid $color-white;
 
   .footer_logo {
     img {
@@ -98,6 +108,7 @@ footer {
   h3 {
     font-size: 1.15rem;
     font-weight: 300;
+    color: $color-white;
   }
 
   .list-group {
@@ -106,8 +117,21 @@ footer {
       padding: 5px;
 
       a {
-        color: #cccccc!important;
+        color: $color-grey!important;
       }
     }
   }
+}
+
+.navbar-light {
+  font-weight: 800;
+
+  a::first-letter {
+    color: $color-pink;
+  }
+}
+
+.important {
+  color: $color-pink;
+  font-weight: 800;
 }
