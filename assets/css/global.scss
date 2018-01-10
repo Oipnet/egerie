@@ -30,7 +30,7 @@ $popover-arrow-width: 16px;
 @import "~mdbootstrap/sass/mdb/free/_forms-basic";
 
 body {
-  background-image: url('../img/background.png');
+  background-image: url('../img/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,7 +51,6 @@ body {
 .heading {
   padding: 0;
   padding-top: 25px;
-  border-top: 2px solid $color-grey;
 
   .jumbotron {
     border-radius: 0;
@@ -159,6 +158,16 @@ footer {
 
 .md-form {
   input::placeholder {
+    color: $color-white;
+  }
+  input {
+
+    &:focus:not([readonly]) {
+      border-bottom: 1px solid $color-pink;
+      box-shadow: 0 1px 0 0 $color-pink;
+      color: $color-white;
+    }
+
     color: $color-white;
   }
 }
