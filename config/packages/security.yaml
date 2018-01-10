@@ -17,6 +17,10 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                username_parameter: login[username]
+                password_parameter: login[password]
+                csrf_parameter: login[_csrf_token]
+                csrf_token_id: login__csrf_token
             provider: database_provider
             logout:
                 path:   /logout

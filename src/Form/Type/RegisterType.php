@@ -39,7 +39,7 @@ class RegisterType extends AbstractType
                     'placeholder' => 'Téléphone'
                 ]
             ])
-            ->add('zip_code', IntegerType::class, [
+            ->add('zip_code', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Code Postal'
                 ]
