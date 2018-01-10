@@ -193,4 +193,9 @@ class Candidate
         $this->isSelected = $isSelected;
         return $this;
     }
+
+    public function __toString()
+    {
+        return '';
+    }
 }

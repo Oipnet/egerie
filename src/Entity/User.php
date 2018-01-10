@@ -139,6 +139,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->isAdmin = false;
         $this->isJury = false;
         $this->confirmationToken = bin2hex(openssl_random_pseudo_bytes(50));
+        $this->updated = new \DateTime("now");
     }
 
     /**
@@ -576,13 +577,12 @@ class User implements AdvancedUserInterface, \Serializable
         $this->created = $created;
         return $this;
     }
-
     /**
      * @param \DateTime $updated
      *
      * @return User
      */
-    public function setUpdated(\DateTime $updated): User
+    public function setUpdated(?\DateTime $updated): User
     {
         $this->updated = $updated;
         return $this;
