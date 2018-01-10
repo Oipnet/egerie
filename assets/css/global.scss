@@ -10,20 +10,31 @@ $color-black: #000;
 $color-grey: #cccccc;
 
 $text-color: $color-white;
-$body-bg: $color-black;
+$body-bg: none;
 $body-color: $text-color;
 $navbar-light-color: $color-white;
 $navbar-light-hover-color:          rgba($navbar-light-color, .7) !default;
 $navbar-light-active-color:         rgba($navbar-light-color, .9) !default;
 $navbar-light-disabled-color:       rgba($navbar-light-color, .3) !default;
 $jumbotron-bg: $body-bg;
-$list-group-bg: $color-black;
+$list-group-bg: $body-bg;
+$popover-arrow-width: 16px;
 
 @import '~font-awesome/css/font-awesome.css';
 @import '~bootstrap/scss/bootstrap';
 @import '~@fengyuanchen/datepicker/dist/datepicker.css';
+@import "~mdbootstrap/sass/mdb/free/data/_colors";
+@import "~mdbootstrap/sass/mdb/free/data/_variables";
+@import "~mdbootstrap/sass/mdb/free/data/_variables-b4";
+@import "~mdbootstrap/sass/mdb/free/data/_mixins";
+@import "~mdbootstrap/sass/mdb/free/_forms-basic";
 
-
+body {
+  background-image: url('../img/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .logo {
   height: 200px;
   margin: 0 auto;
@@ -59,6 +70,11 @@ $list-group-bg: $color-black;
       display: none;
     }
   }
+}
+
+.container-fluid.heading {
+  border-top: none;
+  margin-bottom: 25px;
 }
 
 .about {
@@ -117,7 +133,12 @@ footer {
       padding: 5px;
 
       a {
-        color: $color-grey!important;
+        color: $color-white;
+        font-weight: 800;
+
+        &::first-letter {
+          color: $color-pink;
+        }
       }
     }
   }
@@ -134,4 +155,10 @@ footer {
 .important {
   color: $color-pink;
   font-weight: 800;
+}
+
+.md-form {
+  input::placeholder {
+    color: $color-white;
+  }
 }

@@ -4,6 +4,7 @@ require('@fengyuanchen/datepicker');
 require('./css/global.scss');
 require('./img/casting-logo.png');
 require('./img/favicon.ico');
+require('./img/presentation.png');
 
 $(document).ready(function () {
     $('#jumbo_more_btn').click(e => {
@@ -17,4 +18,6 @@ $(document).ready(function () {
     $('.js-datepicker').datepicker({
         format: 'yyyy-mm-dd',
     });
+
+    $('input[type="date"]').attr('type', 'text');
 });

@@ -19,21 +19,58 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('first_name', TextType::class)
-            ->add('last_name', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('phone', TextType::class)
-            ->add('zip_code', IntegerType::class)
-            ->add('city', TextType::class)
+            ->add('first_name', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Prénom'
+                ]
+            ])
+            ->add('last_name', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Nom'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'placeholder' => 'E-mail'
+                ]
+            ])
+            ->add('phone', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Téléphone'
+                ]
+            ])
+            ->add('zip_code', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Code Postal'
+                ]
+            ])
+            ->add('city', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ville'
+                ]
+            ])
             ->add('birth_date', DateType::class, [
                 'widget' => 'single_text',
-                'html5' => false,
-                'attr' => ['class' => 'js-datepicker'],
+                'attr' => [
+                    'onfocus'   => '(this.type=\'date\')',
+                    'onblur'    => '(this.type=\'text\')',
+                    'placeholder' => 'Date de naissance',
+                ]
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => [ 'label' => 'Mot de passe'],
-                'second_options' => [ 'label' => 'Confirmer'],
+                'first_options' => [
+                    'label' => 'Mot de passe',
+                    'attr' => [
+                        'placeholder' => 'Mot de passe'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Confirmer',
+                    'attr' => [
+                        'placeholder' => 'Confirmer'
+                    ]
+                ],
             ])
         ;
     }
