@@ -39,7 +39,11 @@ class CandidateType extends AbstractType
                     return $hair ? $hair->getShortCode(): '';
                 }
             ])
-            ->add('size', IntegerType::class)
+            ->add('size', IntegerType::class, [
+                'attr' => [
+                    'placeholder' => 'Taille'
+                ]
+            ])
         ;
     }
 

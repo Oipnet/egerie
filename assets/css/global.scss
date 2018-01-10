@@ -9,6 +9,7 @@ $color-white: #fff;
 $color-black: #000;
 $color-grey: #cccccc;
 
+$primary: $color-pink;
 $text-color: $color-white;
 $body-bg: none;
 $body-color: $text-color;
@@ -23,6 +24,7 @@ $popover-arrow-width: 16px;
 @import '~font-awesome/css/font-awesome.css';
 @import '~bootstrap/scss/bootstrap';
 @import '~@fengyuanchen/datepicker/dist/datepicker.css';
+@import '~node-waves/src/scss/waves.scss';
 @import "~mdbootstrap/sass/mdb/free/data/_colors";
 @import "~mdbootstrap/sass/mdb/free/data/_variables";
 @import "~mdbootstrap/sass/mdb/free/data/_variables-b4";

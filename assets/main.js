@@ -1,5 +1,8 @@
 var $ = require('jquery');
+require('popper.js')
 require('bootstrap');
+var Waves = require('node-waves');
+require('mdbootstrap/js/mdb')
 require('@fengyuanchen/datepicker');
 require('./css/global.scss');
 require('./img/casting-logo.png');

@@ -591,7 +591,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @return Candidate
      */
-    public function getCandidate(): Candidate
+    public function getCandidate(): ? Candidate
     {
         return $this->candidate;
     }

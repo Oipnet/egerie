@@ -7,3 +7,4 @@ easy_admin:
         - App\Entity\Hair
         - App\Entity\Contact
         - App\Entity\Candidate
+        - App\Entity\Partner

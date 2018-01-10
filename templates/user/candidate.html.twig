@@ -3,9 +3,41 @@
 {% block body %}
     <div class="container">
         {{ form_start(form, {'multipart': true}) }}
-            <input type="file" name="portrait">
-            <input type="file" name="full_body">
-            <button class="btn btn-secondary btn-block">Envoyer ma candidature</button>
+            <fieldset>
+                <legend class="text-center">Poser votre candidature</legend>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            {{ form_label(form.language, 'Langue') }}
+                            {{ form_widget(form.language) }}
+                        </div>
+                        <div class="md-form">
+                            {{ form_widget(form.size) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.eye, 'Couleur des yeux') }}
+                            {{ form_widget(form.eye) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.hair, 'Couleur des cheveux') }}
+                            {{ form_widget(form.hair) }}
+                        </div>
+                        <div class="form-group file-field">
+                            <div class="btn btn-outline-secondary btn-sm">
+                                <span>Photo de portrait</span>
+                                <input type="file" name="portrait">
+                            </div>
+                        </div>
+                        <div class="form-group file-field">
+                            <div class="btn btn-outline-secondary btn-sm">
+                                <span>Photo de plein pied</span>
+                                <input type="file" name="full_body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-primary btn-block">Envoyer ma candidature</button>
+            </fieldset>
         {{ form_end(form) }}
     </div>
 {% endblock %}
