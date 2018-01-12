@@ -22,7 +22,7 @@
                     <span class="text-uppercase">Katarina Jectovic</span> grande gagnante du casting Egerie sun7 boulevard a représenté la marque pendant 2 ANS sur les supports de publicités de la marque sun7 boulevard mais sur plusieurs événements beauté dont miss of the world
                 </p>
                 <p>
-                    Apres le succès de la première édition de nombreuses grande marques sont partenaires de l'évènements produits cosmétiques vêtements bijoux
+                    Apres le succès de la première édition de nombreuses grande marques sont partenaires de l'évènements
                 </p>
             </div>
         </div>
@@ -62,10 +62,16 @@
                             Vous pensez être <span class="text-uppercase">L'égérie SUN 7 BOULEVARD</span>, Déposez votre candidature en ligne.<br>
                             Si vous avez entre 18 et 28 ans, Etre disponible le 11 et 12 Mai pour défiler a la fashion week de Tunis . Inscrivez-vous au Casting en soumettant votre candidature sur le site CASTING SUN 7 boulevard jusqu'au Mardi 13 Fevrier 2018 et invitez tous vos amis à s'inscrire pour qu'ils votent pour vous.
                         </p>
-                        <a href="#" class="btn btn-outline-primary"><i class="fa fa-arrow-circle-o-right"></i> Inscrivez vous</a>
+                        <a href="#" class="btn btn-outline-secondary"><i class="fa fa-arrow-circle-o-right"></i> Inscrivez vous</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container contact">
+        {% include 'partials/_contact.html.twig' %}
+    </div>
+    <div class="container-fluid partner">
+        {% include 'partials/_partner.html.twig' with  { 'partners': partners}%}
     </div>
 {% endblock %}

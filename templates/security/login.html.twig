@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container">
+    <div class="container heading">
         {{ form_start(form) }}
             <fieldset>
                 <legend class="text-center">Connection</legend>
@@ -10,7 +10,7 @@
                         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
 
-                    <button type="submit">login</button>
+                    <button type="submit" class="btn btn-outline-primary btn-block">Se connecter</button>
                 </div>
             </fieldset>
         {{ form_end(form) }}

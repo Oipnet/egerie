@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container">
+    <div class="container heading">
         <div class="row">
             <div class="col-12">
                 {{ form_start(form) }}
@@ -41,7 +41,7 @@
                             {{ form_widget(form.plainPassword.second) }}
                         </div>
                     </fieldset>
-                    <button class="btn btn-secondary btn-block">S'inscrire</button>
+                    <button class="btn btn-outline-primary btn-block">S'inscrire</button>
                 {{ form_end(form) }}
             </div>
         </div>

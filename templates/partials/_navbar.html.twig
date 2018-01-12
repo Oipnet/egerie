@@ -1,55 +1,47 @@
-<nav class="navbar navbar-light bg-faded logo">
+<nav class="navbar fixed-top navbar-light bg-black navbar-expand-md navigation">
     <a href="{{ path('homepage') }}" class="navbar-brand">
-        <img class="mx-auto d-block" src="{{ asset('build/images/casting-logo.png') }}" alt="Casting sun7">
+        <img class="mx-auto d-blockalign-middle" src="{{ asset('build/images/casting-logo.png') }}" alt="Casting sun7">
     </a>
-</nav>
-<nav class="navbar navbar-light bg-faded navbar-expand-md navigation">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a href="{{ path('homepage') }}" class="nav-link">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{ path('register') }}" class="nav-link">Inscription</a>
-                    {% else %}
-                        <a href="{{ path('user_profil') }}" class="nav-link">Mon profil</a>
-                    {% endif %}
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('presentation') }}" class="nav-link">Présentation</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Egérie</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('candidate') }}" class="nav-link">Candidates</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('contact') }}" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Partenaires</a>
-                </li>
-                <li class="nav-item">
-                    {% if is_granted('ROLE_JURY') %}
-                        <a href="{{ path('jury_selection') }}" class="nav-link">Selection</a>
-                    {% endif %}
-                </li>
-            </ul>
-            <ul class="navbar-nav">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a href="{{ path('homepage') }}" class="nav-link">Accueil</a>
+            </li>
+            <li class="nav-item">
                 {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="nav-item">
-                        <a href="{{ path('login') }}" class="nav-link">Se connecter</a>
-                    </li>
-                {%  else %}
-                    <li class="nav-item">
-                        <a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
-                    </li>
-                {%  endif %}
-            </ul>
-        </div>
+                    <a href="{{ path('register') }}" class="nav-link">Inscription</a>
+                {% else %}
+                    <a href="{{ path('user_profil') }}" class="nav-link">Mon profil</a>
+                {% endif %}
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('presentation') }}" class="nav-link">Présentation</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Egérie</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('candidate') }}" class="nav-link">Candidates</a>
+            </li>
+            <li class="nav-item">
+                {% if is_granted('ROLE_JURY') %}
+                    <a href="{{ path('jury_selection') }}" class="nav-link">Selection</a>
+                {% endif %}
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="nav-item">
+                    <a href="{{ path('login') }}" class="nav-link">Se connecter</a>
+                </li>
+            {%  else %}
+                <li class="nav-item">
+                    <a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
+                </li>
+            {%  endif %}
+        </ul>
+    </div>
 </nav>

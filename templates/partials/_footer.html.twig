@@ -1,38 +1,5 @@
 <footer class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                <h3>Egérie SUN7 Boulevard</h3>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="{{ path('presentation') }}" class="d-inline-block">Présentation</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="{{ path('register') }}" class="d-inline-block">Inscription</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="d-inline-block">Egérie</a>
-                    </li>
-                    <li class="list-group-item">
-                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href="{{ path('register') }}" class="d-inline-block">Inscription</a>
-                        {% else %}
-                            <a href="{{ path('user_profil') }}" class="d-inline-block">Mon profil</a>
-                        {% endif %}
-                    </li>
-                    <li class="list-group-item">
-                        <a href="{{ path('contact') }}" class="d-inline-block">Contact</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#" class="d-inline-block">Partenaires</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-xs-12 footer_logo">
-                <img class="mx-auto d-block" src="{{ asset('build/images/casting-logo.png') }}" alt="Casting sun7">
-            </div>
-            {{ render(controller('App\\Controller\\PartnerController::footerAction')) }}
-
-        </div>
+    <div class="row col-12">
+        <div class="mx-auto">Créé par <a href="http://arnaud-pointet.info">Oipnet</a> (Janvier 2018)</div>
     </div>
 </footer>

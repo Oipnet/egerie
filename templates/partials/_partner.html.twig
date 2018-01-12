@@ -1,0 +1,16 @@
+<div class="container">
+    <h3>Nos partenaires</h3>
+    <div class="row">
+        {% for partner in partners %}
+            <div class="col-md-3">
+                {% if partner.banner %}
+                    {{ partner.banner|raw }}
+                {% else %}
+                    <a href="{{ partner.site }}" target="_blank">
+                        {{ partner.name }}
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

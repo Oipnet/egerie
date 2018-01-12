@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 
@@ -49,6 +50,7 @@ class ContactController
 
     /**
      * @Route(path="contact", name="contact")
+     * @Method({"POST"})
      */
     public function __invoke(Request $request)
     {
@@ -66,10 +68,8 @@ class ContactController
 
             $event = new ContactEvent($contact);
             $this->dispatcher->dispatch(ContactEvent::NAME, $event);
-
-            return new RedirectResponse($this->router->generate('homepage'));
         }
 
-        return new Response($this->twig->render('contact.html.twig', [ 'form' => $form->createView()]));
+        return new RedirectResponse($this->router->generate('homepage'));
     }
 }

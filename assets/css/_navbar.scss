@@ -1,0 +1,13 @@
+.navbar-brand {
+  height: $navbar-size;
+  padding-left: 30px;
+
+  img {
+    height: $navbar-size;
+  }
+}
+
+.navbar-light {
+  font-weight: 800;
+  padding: 0;
+}

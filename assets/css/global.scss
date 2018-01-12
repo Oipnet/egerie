@@ -1,25 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif;
-$fa-font-path: "~font-awesome/fonts";
-
-$color-pink: #E2007A;
-$color-white: #fff;
-$color-black: #000;
-$color-grey: #cccccc;
-
-$primary: $color-pink;
-$text-color: $color-white;
-$body-bg: none;
-$body-color: $text-color;
-$navbar-light-color: $color-white;
-$navbar-light-hover-color:          rgba($navbar-light-color, .7) !default;
-$navbar-light-active-color:         rgba($navbar-light-color, .9) !default;
-$navbar-light-disabled-color:       rgba($navbar-light-color, .3) !default;
-$jumbotron-bg: $body-bg;
-$list-group-bg: $body-bg;
-$popover-arrow-width: 16px;
+@import "_variables";
 
 @import '~font-awesome/css/font-awesome.css';
 @import '~bootstrap/scss/bootstrap';
@@ -30,40 +11,27 @@ $popover-arrow-width: 16px;
 @import "~mdbootstrap/sass/mdb/free/data/_mixins";
 @import "~mdbootstrap/sass/mdb/free/_forms-basic";
 
-body {
-  background-image: url('../img/background.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.logo {
-  height: 200px;
-  margin: 0 auto;
-  border-bottom: 1px solid;
-
-  a {
-    height: 200px;
-    width: 100%;
-    line-height: 100px;
-    padding: 0;
-  }
-}
+@import "_navbar";
+@import "_form";
+@import "_contact";
+@import "_partner";
+@import "_presentation";
+@import "_footer";
 
 .heading {
+  margin-top: $navbar-size;
   padding: 0;
-  padding-top: 25px;
 
   .jumbotron {
     border-radius: 0;
     padding: 4rem 0;
     margin-bottom: 25px;
     padding-bottom: 0;
-    color: $color-white;
+    color: $text-color;
 
     h1 {
-      border-top: 1px solid $color-black;
       padding: 15px 0;
-      color: $color-pink;
+      color: $color-grey;
     }
 
     #jumbo_more {
@@ -90,7 +58,7 @@ body {
 
   .card {
     padding: 30px;
-    color: $color-white;
+    color: $text-color;
   }
 
   .about_about {
@@ -107,68 +75,5 @@ body {
 
   .btn-secondary {
     background: none;
-  }
-}
-
-footer {
-  padding-top: 20px;
-  margin: 20px 0;
-  border-top: 1px solid $color-white;
-
-  .footer_logo {
-    img {
-      height: 200px;
-    }
-  }
-
-  h3 {
-    font-size: 1.15rem;
-    font-weight: 300;
-    color: $color-white;
-  }
-
-  .list-group {
-    .list-group-item {
-      border: none;
-      padding: 5px;
-
-      a {
-        color: $color-white;
-        font-weight: 800;
-
-        &::first-letter {
-          color: $color-pink;
-        }
-      }
-    }
-  }
-}
-
-.navbar-light {
-  font-weight: 800;
-
-  a::first-letter {
-    color: $color-pink;
-  }
-}
-
-.important {
-  color: $color-pink;
-  font-weight: 800;
-}
-
-.md-form {
-  input::placeholder {
-    color: $color-white;
-  }
-  input {
-
-    &:focus:not([readonly]) {
-      border-bottom: 1px solid $color-pink;
-      box-shadow: 0 1px 0 0 $color-pink;
-      color: $color-white;
-    }
-
-    color: $color-white;
   }
 }

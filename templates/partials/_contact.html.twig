@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Nous contacter</h2>
+        {{ form_start(form, {'action': path('contact')}) }}
+            <div class="md-form">
+                {{ form_widget(form.author) }}
+            </div>
+            <div class="md-form">
+                {{ form_widget(form.subject) }}
+            </div>
+            {{ form_label(form.content) }}
+            <div class="md-form">
+                {{ form_widget(form.content) }}
+            </div>
+            <button class="btn btn-outline-primary btn-block">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+</div>

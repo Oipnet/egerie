@@ -1,0 +1,15 @@
+.md-form {
+  input::placeholder {
+    color: $text-color;
+  }
+  input {
+
+    &:focus:not([readonly]) {
+      border-bottom: 1px solid $color-pink;
+      box-shadow: 0 1px 0 0 $color-pink;
+      color: $text-color;
+    }
+
+    color: $text-color;
+  }
+}

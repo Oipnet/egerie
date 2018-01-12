@@ -1,0 +1,23 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif;
+$fa-font-path: "~font-awesome/fonts";
+
+$color-pink: #E2007A;
+$color-white: #fff;
+$color-black: #000;
+$color-grey: #565656;
+
+$primary: $color-grey;
+$secondary: $color-pink;
+$text-color: darken($color-grey, 30%);
+$body-bg: none;
+$body-color: $text-color;
+$navbar-light-color: $color-white;
+$navbar-light-hover-color:          rgba($navbar-light-color, .7) !default;
+$navbar-light-active-color:         rgba($navbar-light-color, .9) !default;
+$navbar-light-disabled-color:       rgba($navbar-light-color, .3) !default;
+$jumbotron-bg: $body-bg;
+$list-group-bg: $body-bg;
+$popover-arrow-width: 16px;
+$navbar-size: 90px;
+$container-margin-top: 15px;
