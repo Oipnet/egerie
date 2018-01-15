@@ -7,9 +7,16 @@
                 <legend class="text-center">Connection</legend>
                 <div class="row">
                     {% if error %}
-                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        <div class="col-12">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
-
+                    <div class="col-12">
+                        <div class="md-form">
+                            {{ form_widget(form.username) }}
+                        </div>
+                        <div class="md-form">
+                            {{ form_widget(form.password) }}
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-outline-primary btn-block">Se connecter</button>
                 </div>
             </fieldset>
