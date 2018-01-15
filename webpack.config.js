@@ -10,6 +10,7 @@ Encore
 
     // will create public/build/app.js and public/build/app.css
     .addEntry('app', './assets/main.js')
+    .addEntry('noty', './node_modules/noty/lib/noty.js')
 
     // allow sass/scss files to be processed
     .enableSassLoader()

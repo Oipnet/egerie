@@ -7,6 +7,7 @@ use App\Form\Type\ContactType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
@@ -24,11 +25,16 @@ class HomeController {
      * @var RegistryInterface
      */
     private $doctrine;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     public function __construct(
         Environment $twig,
         FormFactoryInterface $form,
-        RegistryInterface $doctrine)
+        RegistryInterface $doctrine
+    )
     {
         $this->twig = $twig;
         $this->form = $form;

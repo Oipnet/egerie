@@ -15,6 +15,19 @@
         {% block body %}{% endblock %}
         {%  include "partials/_footer.html.twig" %}
         <script src="{{ asset('build/app.js') }}"></script>
+
+        <script>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    new Noty({
+                        theme: 'bootstrap-v4',
+                        type: '{{ label }}',
+                        text: '{{ message }}',
+                        timeout: 2000
+                    }).show();
+                {% endfor %}
+            {% endfor %}
+        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

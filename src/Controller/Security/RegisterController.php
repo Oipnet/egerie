@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -46,8 +47,20 @@ class RegisterController {
      * @var UserPasswordEncoderInterface
      */
     private $passwordEncoder;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
-    public function __construct(Environment $twig, FormFactoryInterface $form, RegistryInterface $doctrine, RouterInterface $router, EventDispatcherInterface $dispatcher, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(
+        Environment $twig,
+        FormFactoryInterface $form,
+        RegistryInterface $doctrine,
+        RouterInterface $router,
+        EventDispatcherInterface $dispatcher,
+        UserPasswordEncoderInterface $passwordEncoder,
+        FlashBagInterface $flashBag
+    )
     {
         $this->twig = $twig;
         $this->form = $form;
@@ -55,6 +68,7 @@ class RegisterController {
         $this->router = $router;
         $this->dispatcher = $dispatcher;
         $this->passwordEncoder = $passwordEncoder;
+        $this->flashBag = $flashBag;
     }
 
     /**
@@ -79,6 +93,11 @@ class RegisterController {
 
             $event = new UserRegisterEvent($user);
             $this->dispatcher->dispatch(UserRegisterEvent::NAME, $event);
+
+            $this->flashBag->add(
+                'success',
+                'Votre inscription a bien été enregistrée. Un e-mail de validation vous a été transmis'
+            );
 
             return new RedirectResponse($this->router->generate('homepage'));
         }

@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\RouterInterface;
@@ -38,14 +39,25 @@ class ContactController
      * @var EventDispatcherInterface
      */
     private $dispatcher;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
-    public function __construct(Environment $twig, FormFactoryInterface $form, RegistryInterface $doctrine, RouterInterface $router, EventDispatcherInterface $dispatcher)
+    public function __construct(
+        Environment $twig,
+        FormFactoryInterface $form,
+        RegistryInterface $doctrine,
+        RouterInterface $router,
+        EventDispatcherInterface $dispatcher,
+        FlashBagInterface $flashBag)
     {
         $this->twig = $twig;
         $this->form = $form;
         $this->doctrine = $doctrine;
         $this->router = $router;
         $this->dispatcher = $dispatcher;
+        $this->flashBag = $flashBag;
     }
 
     /**
@@ -69,6 +81,11 @@ class ContactController
             $event = new ContactEvent($contact);
             $this->dispatcher->dispatch(ContactEvent::NAME, $event);
         }
+
+        $this->flashBag->add(
+            'success',
+            'Votre demande a bien été enregistrée'
+        );
 
         return new RedirectResponse($this->router->generate('homepage'));
     }

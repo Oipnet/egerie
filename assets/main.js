@@ -1,4 +1,5 @@
 var $ = require('jquery');
+window.Noty = require('noty');
 require('popper.js')
 require('bootstrap');
 var Waves = require('node-waves');
