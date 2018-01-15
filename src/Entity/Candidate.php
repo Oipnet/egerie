@@ -51,6 +51,13 @@ class Candidate
      */
     private $isSelected;
 
+    /**
+     * @var string $description
+     *
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
     public function __construct()
     {
         $this->medias = new ArrayCollection();
@@ -197,5 +204,23 @@ class Candidate
     public function __toString()
     {
         return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return Candidate
+     */
+    public function setDescription(string $description): Candidate
+    {
+        $this->description = $description;
+        return $this;
     }
 }

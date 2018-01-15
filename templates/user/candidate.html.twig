@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container heading">
+    <div class="container heading candidate">
         {{ form_start(form, {'multipart': true}) }}
             <fieldset>
                 <legend class="text-center">Poser votre candidature</legend>
@@ -33,6 +33,9 @@
                                 <span>Photo de plein pied</span>
                                 <input type="file" name="full_body">
                             </div>
+                        </div>
+                        <div class="md-form">
+                            {{ form_widget(form.description) }}
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -42,6 +43,13 @@ class CandidateType extends AbstractType
             ->add('size', IntegerType::class, [
                 'attr' => [
                     'placeholder' => 'Taille'
+                ]
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'A propos de moi',
+                'attr' => [
+                    'placeholder' => 'A propos de moi',
+                    'rows' => 15
                 ]
             ])
         ;
