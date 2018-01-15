@@ -1,7 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container heading video-presentation d-none d-md-block">
+    <div class="container-fluid heading image-presentation">
+        <img src="{{ asset('build/images/presentation.png') }}" alt="" class="img-fluid image-presentation">
+    </div>
+    <div class="container video-presentation d-none d-md-block">
         <video width="800" height="400" autoplay controls class="d-block mx-auto">
             <source src="presentation.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -26,8 +29,5 @@
         <p>
             Avec ce casting, la nouvelle égérie SUN7 BOULEVARD pourra lancer sa carrière de mannequin et bénéficier d’un book professionnel ce qui lui donnera une visibilité unique sur Lyon et toute la France. Par ailleurs, les candidates auront l’occasion d’être repérée par les membres du jury, Elite Model, des créateurs de modes, photographies ou encore la Fashion Week.
         </p>
-    </div>
-    <div class="container-fluid heading image-presentation">
-        <img src="{{ asset('build/images/presentation.png') }}" alt="" class="img-fluid image-presentation">
     </div>
 {% endblock %}
