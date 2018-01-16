@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -36,6 +37,10 @@ class CandidateController
      * @var FileUploader
      */
     private $fileUploader;
+    /**
+     * @var FlashBagInterface
+     */
+    private $flashBag;
 
     public function __construct(
         TokenStorageInterface $token,
@@ -43,7 +48,8 @@ class CandidateController
         RegistryInterface $doctrine,
         Environment $twig,
         FormFactoryInterface $form,
-        FileUploader $fileUploader
+        FileUploader $fileUploader,
+        FlashBagInterface $flashBag
     )
     {
         $this->token = $token;
@@ -52,6 +58,7 @@ class CandidateController
         $this->doctrine = $doctrine;
         $this->router = $router;
         $this->fileUploader = $fileUploader;
+        $this->flashBag = $flashBag;
     }
 
     /**
@@ -96,7 +103,9 @@ class CandidateController
             $em->persist($mediaFullBody);
             $em->flush();
 
-            return new RedirectResponse($this->router->generate('homepage'));
+            $this->flashBag->add('success', 'Votre candidature a été enregistrée');
+
+            return new RedirectResponse($this->router->generate('user_profil'));
         }
 
         return Response::create($this->twig->render('user/candidate.html.twig', [ 'form' => $form->createView()] ));

@@ -1,71 +1,23 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container heading">
-        {% if not user.candidate %}
-            <a href="{{ path('user_candidate') }}" class="text-center btn btn-block">Participer au casting</a>
-        {% endif %}
-        <h1 class="text-center">Mon profil</h1>
+    <div class="container heading profil">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 {% if user.candidate %}
-                    <img
-                        src="{{ asset('uploads/') ~ user.candidate.portrait.filename }}"
-                        alt=""
-                        class="img-thumbnail"
-                    >
+                    {% include 'partials/_user.html.twig' with { 'user': user} %}
                 {% endif %}
             </div>
-            <div class="col-md-9 text-center">
-                <div class="row">
-                    <div class="col-3">Nom :</div>
-                    <div class="col-9">{{ user.lastName }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-3">Prénom :</div>
-                    <div class="col-9">{{ user.firstName }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-3">E-mail :</div>
-                    <div class="col-9">{{ user.email }}</div>
-                </div>
+            <div class="col-md-6">
+                {% if not user.candidate %}
+                    <a href="{{ path('user_candidate') }}" class="text-center btn btn-primary btn-block">
+                        Participer au casting
+                    </a>
+                {% endif %}
+                <a href="#" class="text-center btn btn-outline-primary btn-block">
+                    Modifier mes informations
+                </a>
             </div>
         </div>
-        {% if user.candidate %}
-            <h2 class="text-center">Ma candidature</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <img
-                        src="{{ asset('uploads/') ~ user.candidate.fullBody.filename }}"
-                        alt=""
-                        class="img-thumbnail"
-                    >
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col-3">Cheveux :</div>
-                                <div class="col-9">{{ user.candidate.hair.label }}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3">Yeux :</div>
-                                <div class="col-9">{{ user.candidate.eye.label }}</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="row">
-                                <div class="col-3">Taille :</div>
-                                <div class="col-9">{{ user.candidate.size }}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3">Langue :</div>
-                                <div class="col-9">{{ user.candidate.language.label }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
     </div>
 {% endblock %}
