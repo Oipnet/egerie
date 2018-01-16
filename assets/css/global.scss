@@ -21,11 +21,12 @@
 @import "_presentation";
 @import "_profil";
 @import "_candidate";
+@import "_egerie";
 @import "_footer";
 
 .heading {
   margin-top: $navbar-size;
-  padding: 0;
+  padding-top: $container-margin-top;
 
   .jumbotron {
     border-radius: 0;

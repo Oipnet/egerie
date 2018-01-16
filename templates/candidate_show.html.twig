@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container heading candidate">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center fullname">Profil de {{ user.fullname }}</h1>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                {{ user.age }} ans - {{ user.city }}<br>
+                {{ user.candidate.size }} cm - Yeux {{ user.candidate.eye.label }} - Cheveux {{ user.candidate.hair.label }}
+            </div>
+            <div class="col-md-4 col-sm-12 text-right">
+                <a href="#" class="btn btn-outline-primary">Ajouter a mes favories</a>
+                <a href="#" class="btn btn-outline-secondary">Voter</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

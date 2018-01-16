@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -132,6 +133,13 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(name="confirmation_token", type="string", length=100, nullable = true)
      */
     public $confirmationToken;
+
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"firstname", "lastname"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -624,5 +632,31 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->isJury = $isJury;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug): User
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        $age = date('Y') - $this->getBirthDate()->format('Y');
+
+        return (date('md') < $this->getBirthDate()->format('md'))?
+            $age - 1 :
+            $age;
     }
 }
