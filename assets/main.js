@@ -10,7 +10,7 @@ require('./css/global.scss');
 require('./img/casting-logo.png');
 require('./img/favicon.ico');
 require('./img/presentation.png');
-require('./img/egeries.png');
+require('./img/egeries.jpg');
 require('./img/katarina-jectovic/katarina-jectovic-1.jpg');
 require('./img/katarina-jectovic/katarina-jectovic-2.jpg');
 require('./img/katarina-jectovic/katarina-jectovic-3.jpg');
@@ -41,4 +41,18 @@ $(document).ready(function () {
     });
 
     $('input[type="date"]').attr('type', 'text');
+
+    $('.candidate_portrait .img-thumbnail').click(function () {
+        var srcPortrait = $(this).attr('src');
+        var srcFullBody = $('.candidate_fullBody img').attr('src');
+
+        $('.candidate_fullBody img').attr('src', srcPortrait);
+        $(this).attr('src', srcFullBody);
+    });
+
+    $('.candidate_portrait img').hover(function () {
+        $('.candidate_portrait .zoom').removeClass('d-none');
+    }, function () {
+        $('.candidate_portrait .zoom').addClass('d-none');
+    });
 });

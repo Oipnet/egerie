@@ -134,6 +134,6 @@ class Media
 
     public function getSrc(): ?string
     {
-        return $this->getPath().DIRECTORY_SEPARATOR.$this->getFilename();
+        return $this->getPath().$this->getFilename();
     }
 }
