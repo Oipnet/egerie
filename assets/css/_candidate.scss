@@ -23,17 +23,20 @@
   .candidate_portrait {
     margin-top: 15px;
     padding-right: 0;
+    z-index: 3;
+
+    &:hover {
+      opacity: .5;
+    }
 
     img {
       margin-bottom: 15px;
       transition: .3s ease-in-out;
-
-      &:hover {
-        opacity: .5;
-      }
+      z-index: 1;
     }
 
     .zoom {
+      z-index: 2;
       left: 50%;
       top: 50%;
       transform: translateX(-50%) translateY(-50%);
@@ -41,6 +44,10 @@
       opacity: .5;
       padding: 5px 15px;
       box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     h3 {

@@ -11,7 +11,7 @@
                 {{ user.candidate.size }} cm - Yeux {{ user.candidate.eye.label }} - Cheveux {{ user.candidate.hair.label }}
             </div>
             <div class="col-md-4 col-sm-12 text-right candidate_actions">
-                <a href="#" class="btn btn-outline-primary">
+                <a href="{{ path('add_favorite', { 'slug': user.slug }) }}" class="btn btn-outline-primary">
                     <i class="fa fa-star" aria-hidden="true"></i>
                     Ajouter à mes favorites
                 </a>

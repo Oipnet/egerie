@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -141,6 +143,13 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $slug;
 
+    /**
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="App\Entity\Candidate")
+     */
+    private $favorites;
+
+
     public function __construct()
     {
         $this->isActive = false;
@@ -148,6 +157,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->isJury = false;
         $this->confirmationToken = bin2hex(openssl_random_pseudo_bytes(50));
         $this->updated = new \DateTime("now");
+        $this->favorites = new ArrayCollection();
     }
 
     /**
@@ -658,5 +668,34 @@ class User implements AdvancedUserInterface, \Serializable
         return (date('md') < $this->getBirthDate()->format('md'))?
             $age - 1 :
             $age;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    /**
+     * @param Candidate $candidate
+     * @return User
+     */
+    public function addFavorite(Candidate $candidate): User
+    {
+        $this->favorites->add($candidate);
+
+        return $this;
+    }
+
+    /**
+     * @param Candidate $candidate
+     * @return User
+     */
+    public function removeFavorite(Candidate $candidate): User {
+        $this->favorites->removeElement($candidate);
+
+        return $this;
     }
 }

@@ -42,7 +42,7 @@ class CandidateController
     /**
      * @return Response
      *
-     * @Route(path="/candidates/{slug}", name="cadidate_show")
+     * @Route(path="/candidates/{slug}", name="candidate_show")
      */
     public function showAction($slug): Response
     {

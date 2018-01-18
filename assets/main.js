@@ -50,7 +50,7 @@ $(document).ready(function () {
         $(this).attr('src', srcFullBody);
     });
 
-    $('.candidate_portrait img').hover(function () {
+    $('.candidate_portrait').hover(function () {
         $('.candidate_portrait .zoom').removeClass('d-none');
     }, function () {
         $('.candidate_portrait .zoom').addClass('d-none');

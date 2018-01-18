@@ -4,6 +4,7 @@
     <div class="container heading profil">
         <div class="row">
             <div class="col-md-6">
+                Mes favorites (temporaire) : {% for favorite in user.favorites %}{{ favorite.id }}{% endfor %}
                 {% if user.candidate %}
                     {% include 'partials/_user.html.twig' with { 'user': user} %}
                 {% endif %}
