@@ -9,5 +9,12 @@
 
 .navbar-light {
   font-weight: 800;
-  padding: 0;
+  padding-left: 10px;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .navbar-nav {
+    transform: translateX(-120px);
+  }
 }

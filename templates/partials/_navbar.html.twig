@@ -11,40 +11,17 @@
                 <a href="{{ path('homepage') }}" class="nav-link">Accueil</a>
             </li>
             <li class="nav-item">
-                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="{{ path('register') }}" class="nav-link">Inscription</a>
-                {% else %}
-                    <a href="{{ path('user_profil') }}" class="nav-link">Mon profil</a>
-                {% endif %}
+                <a href="{{ path('first_edition') }}" class="nav-link">Première édition</a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('presentation') }}" class="nav-link">Présentation</a>
+                <a href="{{ path('homepage') }}" class="nav-link">Casting 2018</a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('egerie') }}" class="nav-link">Egérie</a>
+                <a href="{{ path('register') }}" class="nav-link">Inscription</a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('candidate') }}" class="nav-link">Candidates</a>
+                <a href="{{ path('contact') }}" class="nav-link">Contact</a>
             </li>
-            <li class="nav-item">
-                {% if is_granted('ROLE_JURY') %}
-                    <a href="{{ path('jury_selection') }}" class="nav-link">Selection</a>
-                {% endif %}
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                <li class="nav-item">
-                    <a href="{{ path('login') }}" class="nav-link">Se connecter</a>
-                </li>
-            {%  else %}
-                <li class="nav-item">
-                    <a href="{{ path('user_profil') }}" class="nav-link d-inline-block">Bonjour {{ app.user.fullName }}</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ path('logout') }}" class="nav-link">Se déconnecter</a>
-                </li>
-            {%  endif %}
         </ul>
     </div>
 </nav>

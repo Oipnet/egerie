@@ -1,9 +1,14 @@
-.video-presentation {
-  padding-top: $container-margin-top!important;
-}
+.presentation {
+  .video-presentation {
+    padding-top: $container-margin-top!important;
+    margin-bottom: $container-margin-top;
+  }
 
-.image-presentation {
-  margin-bottom: 0!important;
-  width: 100%;
-  padding: 0!important;
+  .presentation_separator {
+    height: 615px;
+    background: url('../img/presentation.png');
+    background-size: cover;
+    margin-top: $container-margin-top;
+    margin-bottom: $container-margin-top;
+  }
 }

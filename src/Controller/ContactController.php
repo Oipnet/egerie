@@ -62,7 +62,6 @@ class ContactController
 
     /**
      * @Route(path="contact", name="contact")
-     * @Method({"POST"})
      */
     public function __invoke(Request $request)
     {
@@ -80,13 +79,15 @@ class ContactController
 
             $event = new ContactEvent($contact);
             $this->dispatcher->dispatch(ContactEvent::NAME, $event);
+
+            $this->flashBag->add(
+                'success',
+                'Votre demande a bien été enregistrée'
+            );
+
+            return new RedirectResponse($this->router->generate('homepage'));
         }
 
-        $this->flashBag->add(
-            'success',
-            'Votre demande a bien été enregistrée'
-        );
-
-        return new RedirectResponse($this->router->generate('homepage'));
+        return new Response($this->twig->render('contact.html.twig', ['form' => $form->createView()]));
     }
 }

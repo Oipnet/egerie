@@ -32,7 +32,6 @@ class CandidateController
     /**
      * @return Response
      *
-     * @Route(path="/candidates", name="candidate")
      */
     public function indexAction(): Response
     {

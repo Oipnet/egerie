@@ -1,8 +1,26 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container-fluid heading image-egerie">
-        <img src="{{ asset('build/images/egeries.png') }}" alt="" class="img-fluid" width="100%">
+    <div class="container-fluid heading katarina">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center display-4 font-weight-bold">
+                    Katarina JECTOVIC
+                </h3>
+                <h4 class="text-center display-4">Egérie 2014</h4>
+            </div>
+        </div>
+        <div class="card-columns">
+            {% for i in 1..15 %}
+                <div class="card">
+                    <a href="{{ asset('build/images/katarina-jectovic-'~ i ~'.jpg') }}" data-lightbox="katarina-jectovic" data-title="Katarina JECTOVIC (Egerie 2014)">
+                        <img
+                                src="{{ asset('build/images/katarina-jectovic-'~ i ~'.jpg') }}"
+                                alt="" width="100" class="card-img-top img-fluid">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
     <div class="container egerie">
         <p>
@@ -18,25 +36,7 @@
             Avec ce casting, la nouvelle égérie SUN7 BOULEVARD pourra lancer sa carrière de mannequin et bénéficier d’un book professionnel ce qui lui donnera une visibilité unique sur Lyon et toute la France. Par ailleurs, les candidates auront l’occasion d’être repérée par les membres du jury, Elite Model, des créateurs de modes, photographies ou encore la Fashion Week.
         </p>
     </div>
-    <div class="container-fluid katarina">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center display-4 font-weight-bold">
-                    Katarina JECTOVIC
-                </h3>
-                <h4 class="text-center display-4">Egérie 2014</h4>
-            </div>
-        </div>
-        <div class="card-columns">
-        {% for i in 1..15 %}
-            <div class="card">
-                <a href="{{ asset('build/images/katarina-jectovic-'~ i ~'.jpg') }}" data-lightbox="katarina-jectovic" data-title="Katarina JECTOVIC (Egerie 2014)">
-                <img
-                    src="{{ asset('build/images/katarina-jectovic-'~ i ~'.jpg') }}"
-                    alt="" width="100" class="card-img-top img-fluid">
-                </a>
-            </div>
-        {% endfor %}
-        </div>
+    <div class="container-fluid partner">
+        {% include 'partials/_partner.html.twig' with  { 'partners': partners}%}
     </div>
 {% endblock %}

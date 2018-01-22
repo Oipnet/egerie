@@ -1,9 +1,0 @@
-{% extends "base.html.twig" %}
-
-{% block body %}
-    <div class="container heading">
-        {% for user in users %}
-            {%  include 'partials/_user.html.twig' with { 'user': user} %}
-        {%  endfor %}
-    </div>
-{% endblock %}
