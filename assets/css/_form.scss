@@ -5,8 +5,8 @@
   input {
 
     &:focus:not([readonly]) {
-      border-bottom: 1px solid $color-pink;
-      box-shadow: 0 1px 0 0 $color-pink;
+      border-bottom: 1px solid $color-gold;
+      box-shadow: 0 1px 0 0 $color-gold;
       color: $text-color;
     }
 

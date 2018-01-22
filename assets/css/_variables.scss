@@ -1,20 +1,21 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Open Sans", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif: "Lato", Roboto, "Helvetica Neue", Arial, sans-serif;
 $fa-font-path: "~font-awesome/fonts";
 
 $color-pink: #E2007A;
 $color-white: #fff;
 $color-black: #000;
 $color-grey: #565656;
+$color-gold: #b69e59;
 
 $primary: $color-grey;
-$secondary: $color-pink;
+$secondary: $color-gold;
 $text-color: darken($color-grey, 30%);
 $body-bg: none;
 $body-color: $text-color;
 $navbar-light-color: $color-white;
-$navbar-light-hover-color:          rgba($navbar-light-color, .7) !default;
-$navbar-light-active-color:         rgba($navbar-light-color, .9) !default;
+$navbar-light-hover-color:          $color-gold !default;
+$navbar-light-active-color:         $color-gold !default;
 $navbar-light-disabled-color:       rgba($navbar-light-color, .3) !default;
 $jumbotron-bg: $body-bg;
 $list-group-bg: $body-bg;

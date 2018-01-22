@@ -12,6 +12,30 @@
   padding-left: 10px;
 }
 
+.nav-link {
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 800;
+
+  &.active {
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block !important;
+      height: 1px;
+      background: #b69e59;
+      margin-left: -20px;
+      transition: all .4s;
+      width: 40px;
+      position: absolute;
+      bottom: 25%;
+      left: 50%;
+      text-align: center;
+    }
+  }
+}
+
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .navbar-nav {

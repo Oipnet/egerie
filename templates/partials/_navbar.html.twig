@@ -8,19 +8,52 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <a href="{{ path('homepage') }}" class="nav-link">Accueil</a>
+                <a href="{{ path('homepage') }}"
+                   class="nav-link
+                        {% if app.request.attributes.get('_route') == 'homepage' %}
+                        active
+                        {% endif %}"
+                >
+                    Accueil
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('first_edition') }}" class="nav-link">Première édition</a>
+                <a href="{{ path('first_edition') }}"
+                   class="nav-link
+                        {% if app.request.attributes.get('_route') == 'first_edition' %}
+                        active
+                        {% endif %}"
+                >
+                    Première édition
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('homepage') }}" class="nav-link">Casting 2018</a>
+                <a href="{{ path('homepage') }}"
+                   class="nav-link
+                        {% if app.request.attributes.get('_route') == 'casting' %}
+                        active
+                        {% endif %}"
+                >Casting 2018</a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('register') }}" class="nav-link">Inscription</a>
+                <a href="{{ path('register') }}"
+                   class="nav-link
+                        {% if app.request.attributes.get('_route') == 'register' %}
+                        active
+                        {% endif %}"
+                >
+                    Inscription
+                </a>
             </li>
             <li class="nav-item">
-                <a href="{{ path('contact') }}" class="nav-link">Contact</a>
+                <a href="{{ path('contact') }}"
+                   class="nav-link
+                        {% if app.request.attributes.get('_route') == 'contact' %}
+                        active
+                        {% endif %}"
+                >
+                    Contact
+                </a>
             </li>
         </ul>
     </div>
