@@ -17,23 +17,38 @@
                     Accueil
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ path('first_edition') }}"
-                   class="nav-link
-                        {% if app.request.attributes.get('_route') == 'first_edition' %}
-                        active
-                        {% endif %}"
-                >
+            <li class="nav-item dropdown">
+                <a class="nav-link
+                    dropdown-toggle
+                    {% if app.request.attributes.get('_route') == 'egerie' %}
+                    active
+                    {% endif %}"
+                    href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Première édition
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('egerie') }}">Egerie</a>
+                    <a class="dropdown-item" href="#">Medias</a>
+                    <a class="dropdown-item" href="#">Ils étaient partenaires</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a href="{{ path('homepage') }}"
-                   class="nav-link
-                        {% if app.request.attributes.get('_route') == 'casting' %}
-                        active
-                        {% endif %}"
-                >Casting 2018</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link
+                    dropdown-toggle
+                    {% if
+                        (app.request.attributes.get('_route') == 'presentation' or
+                        app.request.attributes.get('_route') == 'reglement')
+                    %}
+                    active
+                    {% endif %}"
+                   href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Casting 2018
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('presentation') }}">Présentation</a>
+                    <a class="dropdown-item" href="#">Calendrier</a>
+                    <a class="dropdown-item" href="{{ path('reglement') }}">Réglement</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a href="{{ path('register') }}"

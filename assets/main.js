@@ -11,21 +11,21 @@ require('./img/casting-logo.png');
 require('./img/favicon.ico');
 require('./img/presentation.png');
 require('./img/egeries.png');
-require('./img/katarina-jectovic/katarina-jectovic-1.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-2.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-3.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-4.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-5.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-6.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-7.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-8.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-9.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-10.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-11.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-12.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-13.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-14.jpg');
-require('./img/katarina-jectovic/katarina-jectovic-15.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-1.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-2.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-3.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-4.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-5.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-6.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-7.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-8.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-9.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-10.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-11.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-12.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-13.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-14.jpg');
+require('./img/katarina-jevtovic/katarina-jevtovic-15.jpg');
 
 $(document).ready(function () {
     $('#jumbo_more_btn').click(e => {
@@ -54,5 +54,11 @@ $(document).ready(function () {
         $('.candidate_portrait .zoom').removeClass('d-none');
     }, function () {
         $('.candidate_portrait .zoom').addClass('d-none');
+    });
+
+    $('nav .dropdown').hover(function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(150).slideDown();
+    }, function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
     });
 });

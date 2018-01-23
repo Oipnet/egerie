@@ -24,60 +24,15 @@
             </div>
         </div>
     </div>
-    <div class="container embed-responsive embed-responsive-16by9">
-        <video autoplay controls class=d-block mx-auto embed-responsive-item">
-            <source src="casting.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
     <div class="presentation">
-        <div class="presentation_separator"></div>
         <div class="container embed-responsive embed-responsive-16by9 video-presentation">
-            <video controls class=d-block mx-auto embed-responsive-item">
+            <video controls class="d-block mx-auto embed-responsive-item" autoplay>
             <source src="presentation.mp4" type="video/mp4">
             Your browser does not support the video tag.
             </video>
         </div>
     </div>
-    <div class="container about">
-        <div class="row">
-            <div class="col-sm-12 col-md-4">
-                <div class="card about_about">
-                    <div class="card-block">
-                        <h2 class="card-title">A propos</h2>
-                        <p class="card-text">
-                            La candidate élue lors de la finale du Casting Accompagnera la marque SUN7BOULEVARD pour ses évènements majeurs et ses représentations. Elle participera à la fashion Week en Mai 2018 avec les finalistes
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="card about_step">
-                    <div class="card-block">
-                        <p class="card-text">
-                            La nouvelle Egerie bénéficiera du lancement de sa carrière de mannequin et d'un book professionnel. <span class="text-uppercase">L'égérie SUN 7 BOULEVARD</span> donne également l'occasion aux meilleures candidates d'être repérées par de Nombreux membre du jury Elite model, FASHION Week créateur de mode photographe
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4">
-                <div class="card about_participate">
-                    <div class="card-block">
-                        <h2 class="card-title">Participez</h2>
-                        <p class="card-text">
-                            Vous pensez être <span class="text-uppercase">L'égérie SUN 7 BOULEVARD</span>, Déposez votre candidature en ligne.<br>
-                            Si vous avez entre 18 et 28 ans, Etre disponible le 11 et 12 Mai pour défiler a la fashion week de Tunis . Inscrivez-vous au Casting en soumettant votre candidature sur le site CASTING SUN 7 boulevard jusqu'au Mardi 13 Fevrier 2018 et invitez tous vos amis à s'inscrire pour qu'ils votent pour vous.
-                        </p>
-                        <a href="#" class="btn btn-outline-secondary"><i class="fa fa-arrow-circle-o-right"></i> Inscrivez vous</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container contact">
-        {% include 'partials/_contact.html.twig' %}
-    </div>
-    <div class="container-fluid partner">
-        {% include 'partials/_partner.html.twig' with  { 'partners': partners}%}
+    <div class="container">
+        <a href="{{ path('register') }}" class="btn btn-outline-secondary btn-block text-uppercase">Inscrivez vous</a>
     </div>
 {% endblock %}

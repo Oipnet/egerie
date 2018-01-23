@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container heading egerie">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">Egérie</h2>
+                <p>
+                    Pendant deux ans, c’est KATARINA JEVTOVIC, gagnante précédente, qui a eu la chance de représenter SUN7 BOULEVARD sur les différents supports de communication, visuels et médias, ainsi que des évènements beauté comme <span class="text-uppercase">miss of the world</span>.
+                </p>
+                <p>
+                    Suite au succès de cette première édition, plusieurs grandes marques de cosmétiques, vêtements ou encore bijoux sont devenues partenaire de cet évènement national.
+                </p>
+                <p>
+                    Cette année, la candidate qui sera élue à l’issue de ce casting représentera la marque SUN7 BOULEVARD lors d’évènements importants, notamment la FASHION WEEK de mai 2018 avec les finalistes.
+                </p>
+                <p>
+                    Avec ce casting, la nouvelle égérie SUN7 BOULEVARD pourra lancer sa carrière de mannequin et bénéficier d’un book professionnel ce qui lui donnera une visibilité unique sur Lyon et toute la France. Par ailleurs, les candidates auront l’occasion d’être repérée par les membres du jury, Elite Model, des créateurs de modes, photographies ou encore la Fashion Week.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid katarina">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center display-4 font-weight-bold">
+                    Katarina JEVTOVIC
+                </h3>
+                <h4 class="text-center display-4">Egérie 2014</h4>
+            </div>
+        </div>
+        <div class="card-columns">
+            {% for i in 1..15 %}
+                <div class="card">
+                    <a href="{{ asset('build/images/katarina-jevtovic-'~ i ~'.jpg') }}" data-lightbox="katarina-jectovic" data-title="Katarina JEVTOVIC (Egerie 2014)">
+                        <img
+                                src="{{ asset('build/images/katarina-jevtovic-'~ i ~'.jpg') }}"
+                                alt="" width="100" class="card-img-top img-fluid">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
