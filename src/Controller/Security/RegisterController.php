@@ -2,7 +2,7 @@
 namespace App\Controller\Security;
 
 use App\Entity\User;
-use App\Event\UserRegisterEvent;
+use App\Event\CandidateRegisterEvent;
 use App\Form\Type\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -71,9 +71,7 @@ class RegisterController {
         $this->flashBag = $flashBag;
     }
 
-    /**
-     * @Route(path="/inscription", name="register")
-     */
+
     public function __invoke(Request $request)
     {
         $user = new User();
@@ -91,8 +89,8 @@ class RegisterController {
             $em->persist($user);
             $em->flush();
 
-            $event = new UserRegisterEvent($user);
-            $this->dispatcher->dispatch(UserRegisterEvent::NAME, $event);
+            $event = new CandidateRegisterEvent($user);
+            $this->dispatcher->dispatch(CandidateRegisterEvent::NAME, $event);
 
             $this->flashBag->add(
                 'success',

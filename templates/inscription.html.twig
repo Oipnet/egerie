@@ -1,0 +1,83 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container heading candidate">
+        <h2 class="text-center">Inscription</h2>
+        <div class="row">
+            <div class="col-12">
+                {{ form_start(form, {'multipart': true}) }}
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="md-form">
+                                    {{ form_widget(form.email) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.last_name) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.first_name) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.birth_date) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.size) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.eye, 'Couleur des yeux') }}
+                                    {{ form_widget(form.eye) }}
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="md-form">
+                                    {{ form_widget(form.zip_code) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.city) }}
+                                </div>
+                                <div class="md-form">
+                                    {{ form_widget(form.phone) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.language, 'Langue') }}
+                                    {{ form_widget(form.language) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.hair, 'Couleur des cheveux') }}
+                                    {{ form_widget(form.hair) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group file-field">
+                                    <div class="btn btn-outline-secondary btn-sm">
+                                        <span>Photo de portrait</span>
+                                        <input type="file" name="portrait">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group file-field">
+                                    <div class="btn btn-outline-secondary btn-sm">
+                                        <span>Photo de plein pied</span>
+                                        <input type="file" name="full_body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-check">
+                                    {{ form_widget(form.cgu) }}
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-outline-primary btn-block">S'inscrire</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

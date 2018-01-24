@@ -2,11 +2,11 @@
 
 namespace App\EventSubscriber;
 
-use App\Event\UserRegisterEvent;
+use App\Event\CandidateRegisterEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Twig\Environment;
 
-class UserRegisterSubscriber implements EventSubscriberInterface
+class CandidateRegisterSubscriber implements EventSubscriberInterface
 {
     /**
      * @var \Swift_Mailer
@@ -23,14 +23,14 @@ class UserRegisterSubscriber implements EventSubscriberInterface
         $this->twig = $twig;
     }
 
-    public function onUserRegister(UserRegisterEvent $event)
+    public function onCandidateRegister(CandidateRegisterEvent $event)
     {
-        $user = $event->getUser();
+        $candidate = $event->getCandidate();
 
         $message = (new \Swift_Message("Confirmation d'inscription"))
             ->setFrom('emilie.sun7@yahoo.fr')
-            ->setTo($user->getEmail())
-            ->setBody($this->twig->render('emails/registration.html.twig', compact('user')), 'text/html');
+            ->setTo($candidate->getEmail())
+            ->setBody($this->twig->render('emails/inscription.html.twig', compact('user')), 'text/html');
 
         $this->mailer->send($message);
     }
@@ -38,7 +38,7 @@ class UserRegisterSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-           'user.register' => 'onUserRegister',
+            CandidateRegisterEvent::NAME => 'onCandidateRegister',
         ];
     }
 }

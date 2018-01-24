@@ -18,6 +18,60 @@ class Candidate
     private $id;
 
     /**
+     * @var string $firstname
+     *
+     * @ORM\Column(name="first_name", type="string", length=100)
+     */
+    private $firstname;
+
+    /**
+     * @var string $lastname
+     *
+     * @ORM\Column(name="last_name", type="string", length=100)
+     */
+    private $lastname;
+
+    /**
+     * @var string $email
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $email;
+
+    /**
+     * @var int $zipCode
+     *
+     * @ORM\Column(name="zip_code", type="integer", length=7)
+     */
+    private $zipCode;
+
+    /**
+     * @var string $city
+     *
+     * @ORM\Column(type="string", length=150)
+     */
+    private $city;
+
+    /**
+     * @var \DateTime $birthDate
+     *
+     * @ORM\Column(name="birth_date", type="date")
+     */
+    private $birthDate;
+
+    /**
+     * @var string $phone
+     *
+     * @ORM\Column(type="string", length=20)
+     */
+    private $phone;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="candidate")
+     */
+    private $medias;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Language", inversedBy="candidates")
      */
     private $language;
@@ -39,29 +93,11 @@ class Candidate
      */
     private $hair;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="candidate")
-     */
-    private $medias;
-
-    /**
-     * @var boolean $isSelected
-     *
-     * @ORM\Column(name="is_selected", type="boolean")
-     */
-    private $isSelected;
-
-    /**
-     * @var string $description
-     *
-     * @ORM\Column(type="text")
-     */
-    private $description;
+    private $cgu;
 
     public function __construct()
     {
         $this->medias = new ArrayCollection();
-        $this->isSelected = false;
     }
 
     /**
@@ -182,45 +218,144 @@ class Candidate
         return $this->id;
     }
 
-    /**
-     * @return bool
-     */
-    public function isSelected(): ?bool
-    {
-        return $this->isSelected;
-    }
-
-    /**
-     * @param bool $isSelected
-     *
-     * @return Candidate
-     */
-    public function setIsSelected(bool $isSelected): Candidate
-    {
-        $this->isSelected = $isSelected;
-        return $this;
-    }
-
     public function __toString()
     {
-        return '';
+        return $this->getLastname().' '.$this->getFirstname();
     }
 
     /**
      * @return string
      */
-    public function getDescription(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->description;
+        return $this->firstname;
     }
 
     /**
-     * @param string $description
-     * @return Candidate
+     * @param string $firstname
      */
-    public function setDescription(string $description): Candidate
+    public function setFirstname(string $firstname): Candidate
     {
-        $this->description = $description;
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname): Candidate
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): Candidate
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city): Candidate
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthDate(): ?\DateTime
+    {
+        return $this->birthDate;
+    }
+
+    /**
+     * @param \DateTime $birthDate
+     */
+    public function setBirthDate(\DateTime $birthDate): Candidate
+    {
+        $this->birthDate = $birthDate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone): Candidate
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getZipCode(): ?int
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param int $zipCode
+     */
+    public function setZipCode(int $zipCode): Candidate
+    {
+        $this->zipCode = $zipCode;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCgu()
+    {
+        return $this->cgu;
+    }
+
+    /**
+     * @param mixed $cgu
+     */
+    public function setCgu($cgu)
+    {
+        $this->cgu = $cgu;
         return $this;
     }
 }

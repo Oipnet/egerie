@@ -26,53 +26,11 @@ class User implements AdvancedUserInterface, \Serializable
     private $id;
 
     /**
-     * @var string $firstname
-     *
-     * @ORM\Column(name="first_name", type="string", length=100)
-     */
-    private $firstname;
-
-    /**
-     * @var string $lastname
-     *
-     * @ORM\Column(name="last_name", type="string", length=100)
-     */
-    private $lastname;
-
-    /**
      * @var string $email
      *
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
-
-    /**
-     * @var int $zipCode
-     *
-     * @ORM\Column(name="zip_code", type="integer", length=7)
-     */
-    private $zipCode;
-
-    /**
-     * @var string $city
-     *
-     * @ORM\Column(type="string", length=150)
-     */
-    private $city;
-
-    /**
-     * @var DateTime $birthDate
-     *
-     * @ORM\Column(name="birth_date", type="date")
-     */
-    private $birthDate;
-
-    /**
-     * @var string $phone
-     *
-     * @ORM\Column(type="string", length=20)
-     */
-    private $phone;
 
     /**
      * @Assert\NotBlank()
@@ -102,20 +60,6 @@ class User implements AdvancedUserInterface, \Serializable
     private $isAdmin;
 
     /**
-     * @var bool $isJury
-     *
-     * @ORM\Column(name="is_jury", type="boolean")
-     */
-    private $isJury;
-
-    /**
-     * @var Candidate $candidate
-     *
-     * @ORM\OneToOne(targetEntity="App\Entity\Candidate", cascade={"persist", "remove"})
-     */
-    private $candidate;
-
-    /**
      * @var \DateTime $created
      *
      * @ORM\Column(type="datetime")
@@ -136,25 +80,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public $confirmationToken;
 
-    /**
-     * @var string
-     * @Gedmo\Slug(fields={"firstname", "lastname"})
-     * @ORM\Column(length=128, unique=true)
-     */
-    private $slug;
-
-    /**
-     * @var Collection
-     * @ORM\ManyToMany(targetEntity="App\Entity\Candidate")
-     */
-    private $favorites;
-
 
     public function __construct()
     {
         $this->isActive = false;
         $this->isAdmin = false;
-        $this->isJury = false;
         $this->confirmationToken = bin2hex(openssl_random_pseudo_bytes(50));
         $this->updated = new \DateTime("now");
         $this->favorites = new ArrayCollection();
@@ -185,50 +115,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFullname(): ?string
-    {
-        return $this->getFirstname().' '.$this->getLastname();
-    }
-
-    /**
-     * @param string $firstname
-     * @return User
-     */
-    public function setFirstname($firstname): User
-    {
-        $this->firstname = $firstname;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getLastname(): ?string
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * @param string $lastname
-     * @return User
-     */
-    public function setLastname($lastname): User
-    {
-        $this->lastname = $lastname;
-        return $this;
     }
 
     /**
@@ -278,8 +164,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->getEmail(),
             $this->getPassword(),
             $this->isActive(),
-            $this->isAdmin(),
-            $this->isJury()
+            $this->isAdmin()
         ]);
     }
 
@@ -299,8 +184,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->email,
             $this->password,
             $this->isActive,
-            $this->isAdmin,
-            $this->isJury
+            $this->isAdmin
         ) = unserialize($serialized);
     }
 
@@ -322,7 +206,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        return $this->isAdmin()?['ROLE_ADMIN']:($this->isJury()?['ROLE_JURY']:['ROLE_USER']);
+        return $this->isAdmin()?['ROLE_ADMIN']:['ROLE_USER'];
     }
 
     /**
@@ -371,63 +255,6 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @return int
-     */
-    public function getZipCode(): ?int
-    {
-        return $this->zipCode;
-    }
-
-    /**
-     * @param int $zipCode
-     *
-     * @return User
-     */
-    public function setZipCode(int $zipCode): User
-    {
-        $this->zipCode = $zipCode;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    /**
-     * @param string $city
-     *
-     * @return User
-     */
-    public function setCity(string $city): User
-    {
-        $this->city = $city;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getBirthDate(): ?\DateTime
-    {
-        return $this->birthDate;
-    }
-
-    /**
-     * @param DateTime $birthDate
-     *
-     * @return User
-     */
-    public function setBirthDate(\DateTime $birthDate): User
-    {
-        $this->birthDate = $birthDate;
-        return $this;
-    }
-
-    /**
      * @return bool
      */
     public function isActive(): ?bool
@@ -443,25 +270,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function setIsActive(bool $isActive): User
     {
         $this->isActive = $isActive;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    /**
-     * @param string $phone
-     *
-     * @return User
-     */
-    public function setPhone(string $phone): User
-    {
-        $this->phone = $phone;
         return $this;
     }
 
@@ -603,99 +411,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function setUpdated(?\DateTime $updated): User
     {
         $this->updated = $updated;
-        return $this;
-    }
-
-    /**
-     * @return Candidate
-     */
-    public function getCandidate(): ? Candidate
-    {
-        return $this->candidate;
-    }
-
-    /**
-     * @param mixed $candidate
-     *
-     * @return User
-     */
-    public function setCandidate($candidate): User
-    {
-        $this->candidate = $candidate;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isJury(): bool
-    {
-        return $this->isJury;
-    }
-
-    /**
-     * @param bool $isJury
-     *
-     * @return User
-     */
-    public function setIsJury(bool $isJury): User
-    {
-        $this->isJury = $isJury;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param mixed $slug
-     */
-    public function setSlug($slug): User
-    {
-        $this->slug = $slug;
-        return $this;
-    }
-
-    public function getAge(): ?int
-    {
-        $age = date('Y') - $this->getBirthDate()->format('Y');
-
-        return (date('md') < $this->getBirthDate()->format('md'))?
-            $age - 1 :
-            $age;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getFavorites(): Collection
-    {
-        return $this->favorites;
-    }
-
-    /**
-     * @param Candidate $candidate
-     * @return User
-     */
-    public function addFavorite(Candidate $candidate): User
-    {
-        $this->favorites->add($candidate);
-
-        return $this;
-    }
-
-    /**
-     * @param Candidate $candidate
-     * @return User
-     */
-    public function removeFavorite(Candidate $candidate): User {
-        $this->favorites->removeElement($candidate);
-
         return $this;
     }
 }

@@ -1,4 +1,24 @@
 .candidate {
+  h2 {
+    padding-top: $container-margin-top!important;
+    text-transform: uppercase;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block !important;
+      height: 2px;
+      background: #b69e59;
+      margin-left: -40px;
+      transition: all .4s;
+      width: 80px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      text-align: center;
+    }
+  }
+
   textarea {
     height: auto;
     padding: 10px;
