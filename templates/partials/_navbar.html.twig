@@ -20,7 +20,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link
                     dropdown-toggle
-                    {% if app.request.attributes.get('_route') == 'egerie' %}
+                    {% if app.request.attributes.get('_route') == 'egerie' or
+                app.request.attributes.get('_route') == 'media' or
+                app.request.attributes.get('_route') == 'partner' %}
                     active
                     {% endif %}"
                     href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,8 +30,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('egerie') }}">Egerie</a>
-                    <a class="dropdown-item" href="#">Medias</a>
-                    <a class="dropdown-item" href="#">Ils étaient partenaires</a>
+                    <a class="dropdown-item" href="{{ path('media') }}">Medias</a>
+                    <a class="dropdown-item" href="{{ path('partner') }}">Partenaires</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -46,7 +48,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('presentation') }}">Présentation</a>
-                    <a class="dropdown-item" href="#">Calendrier</a>
                     <a class="dropdown-item" href="{{ path('reglement') }}">Réglement</a>
                 </div>
             </li>

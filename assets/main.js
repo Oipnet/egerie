@@ -11,6 +11,7 @@ require('./img/casting-logo.png');
 require('./img/favicon.ico');
 require('./img/presentation.png');
 require('./img/egeries.png');
+require('./img/partners.png');
 require('./img/katarina-jevtovic/katarina-jevtovic-1.jpg');
 require('./img/katarina-jevtovic/katarina-jevtovic-2.jpg');
 require('./img/katarina-jevtovic/katarina-jevtovic-3.jpg');

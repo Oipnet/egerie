@@ -32,11 +32,32 @@ class Contact
     private $content;
 
     /**
-     * @var string $author
+     * @var string $email
      *
      * @ORM\Column(type="string", length=255)
      */
-    private $author;
+    private $email;
+
+    /**
+     * @var string $lastname
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @var string $firstname
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @var string $phine
+     *
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    private $phone;
 
     /**
      * @var \DateTime $created
@@ -95,19 +116,19 @@ class Contact
     /**
      * @return string
      */
-    public function getAuthor(): ?string
+    public function getEmail(): ?string
     {
-        return $this->author;
+        return $this->email;
     }
 
     /**
-     * @param string $author
+     * @param string $email
      *
      * @return Contact
      */
-    public function setAuthor(string $author): Contact
+    public function setEmail(string $email): Contact
     {
-        $this->author = $author;
+        $this->email = $email;
         return $this;
     }
 
@@ -127,5 +148,54 @@ class Contact
         return $this->created;
     }
 
+    /**
+     * @return string
+     */
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
 
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname(string $firstname): Contact
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname(string $lastname): Contact
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone): Contact
+    {
+        $this->phone = $phone;
+        return $this;
+    }
 }

@@ -2,4 +2,5 @@
 
 <p>{{ contact.content }}</p>
 
-<p>Envoyé le {{ contact.created | date("d/m/Y H:i:s") }} par {{ contact.author }}</p>
+<p>Envoyé le {{ contact.created | date("d/m/Y H:i:s") }} par {{ contact.firstname ~ ' ' ~ contact.lastname }} <{{ contact.email }} - {{ contact.phone }}>
+</p>
