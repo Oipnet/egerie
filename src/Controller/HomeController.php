@@ -49,14 +49,10 @@ class HomeController {
         $contact = new Contact();
         $form = $this->form->createBuilder(ContactType::class, $contact)->getForm();
 
-        $partners = $this->doctrine
-            ->getRepository(Partner::class)
-            ->findActive();
 
         return Response::create(
             $this->twig->render('home.html.twig', [
-                'form' => $form->createView(),
-                'partners' => $partners,
+                'form' => $form->createView()
             ])
         );
     }
