@@ -1,10 +1,32 @@
 easy_admin:
     entities:
 #        # List the entity class name you want to manage
-        - App\Entity\User
-        - App\Entity\Language
-        - App\Entity\Eye
-        - App\Entity\Hair
-        - App\Entity\Contact
-        - App\Entity\Candidate
-        - App\Entity\Partner
+        User:
+            class: App\Entity\User
+        Language:
+            class: App\Entity\Language
+        Eye:
+            class: App\Entity\Eye
+        Hair:
+            class: App\Entity\Hair
+        Contact:
+            class: App\Entity\Contact
+        Candidate:
+            class: App\Entity\Candidate
+            form:
+                fields:
+                    - { property: 'firstname', type: 'text' }
+                    - 'lastname'
+                    - 'email'
+                    - 'eye'
+                    - 'hair'
+                    - 'zipCode'
+                    - 'city'
+                    - 'phone'
+        Partner:
+            class: App\Entity\Partner
+            form:
+                fields:
+                    - { property: 'name', type: 'text'}
+                    - { property: 'site', type: 'text'}
+                    - { property: 'logoFile', type: 'vich_image' }

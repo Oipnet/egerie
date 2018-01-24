@@ -11,6 +11,8 @@ class Media
 {
     const PORTRAIT_TYPE = 0;
     const PLEIN_PIED_TYPE = 1;
+    const PARTNER = 3;
+
 
     /**
      * @ORM\Id
@@ -135,5 +137,10 @@ class Media
     public function getSrc(): ?string
     {
         return $this->getPath().$this->getFilename();
+    }
+
+    public function __toString()
+    {
+        return '<img src="/uploads/"'.$this->getFilename().'>';
     }
 }

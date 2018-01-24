@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
+ * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
  */
 class Partner
 {
@@ -24,11 +28,112 @@ class Partner
     private $name;
 
     /**
-     * @var string $banner
-     *
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=150)
      */
-    private $banner;
+    private $logo;
+
+    /**
+     * @Vich\UploadableField(mapping="partner_images", fileNameProperty="logo")
+     * @var File
+     */
+    private $logoFile;
+
+    /**
+     * @var \DateTime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var \DateTime $updated
+     *
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    private $updated;
+
+    public function __construct()
+    {
+        $this->updated = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered only on insert
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+        $this->updated = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered only on insert
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated(): ?\DateTime
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated(): ?\DateTime
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getLogoFile(): ?File
+    {
+        return $this->logoFile;
+    }
+
+    /**
+     * @param File $logoFile
+     */
+    public function setLogoFile(File $logoFile)
+    {
+        $this->logoFile = $logoFile;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($logoFile) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
 
     /**
      * @var string $name
@@ -36,25 +141,6 @@ class Partner
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $site;
-
-    /**
-     * @var string $banner
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $descrition;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     */
-    private $isActive;
-
-    public function __construct()
-    {
-        $this->setIsActive(true);
-    }
 
     /**
      * @return string
@@ -78,9 +164,9 @@ class Partner
     /**
      * @return string
      */
-    public function getBanner(): ?string
+    public function getLogo(): ?string
     {
-        return $this->banner;
+        return $this->logo;
     }
 
     /**
@@ -88,9 +174,9 @@ class Partner
      *
      * @return Partner
      */
-    public function setBanner(string $banner): Partner
+    public function setLogo(?string $logo): Partner
     {
-        $this->banner = $banner;
+        $this->logo = $logo;
         return $this;
     }
 
@@ -114,48 +200,27 @@ class Partner
     }
 
     /**
-     * @return string
-     */
-    public function getDescrition(): ?string
-    {
-        return $this->descrition;
-    }
-
-    /**
-     * @param string $descrition
-     *
-     * @return Partner
-     */
-    public function setDescrition(string $descrition): Partner
-    {
-        $this->descrition = $descrition;
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param bool $isActive
-     *
-     * @return Partner
-     */
-    public function setIsActive(bool $isActive): Partner
-    {
-        $this->isActive = $isActive;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMedia(): ?Media
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param mixed $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+        return $this;
     }
 }
