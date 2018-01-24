@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        partner_images:
+            uri_prefix: '/images/partner'
+            upload_destination: '%kernel.project_dir%/public/images/partner'
+        candidate_images:
+            uri_prefix: '/uploads'
+            upload_destination: '%kernel.project_dir%/public/uploads'
