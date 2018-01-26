@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container heading partner">
+        <h2 class="text-center">Devenir partenaire</h2>
+        {{ form_start(form, {'multipart': true}) }}
+        <div class="md-form">
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="md-form">
+            {{ form_widget(form.phone) }}
+        </div>
+        <div class="md-form">
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="md-form">
+            {{ form_widget(form.sector) }}
+        </div>
+        <div class="md-form">
+            {{ form_widget(form.site) }}
+        </div>
+        <div class="form-group file-field">
+            <div class="btn btn-outline-secondary btn-sm">
+                <span>Logo</span>
+                <input type="file" name="logo">
+            </div>
+        </div>
+        <button class="btn btn-outline-primary btn-block">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

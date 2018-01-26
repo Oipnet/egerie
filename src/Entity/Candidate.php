@@ -88,11 +88,6 @@ class Candidate
      */
     private $eye;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Hair", inversedBy="candidates")
-     */
-    private $hair;
-
     private $cgu;
 
     public function __construct()
@@ -154,25 +149,6 @@ class Candidate
     public function setEye($eye): Candidate
     {
         $this->eye = $eye;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHair()
-    {
-        return $this->hair;
-    }
-
-    /**
-     * @param mixed $hair
-     *
-     * @return Candidate
-     */
-    public function setHair($hair): Candidate
-    {
-        $this->hair = $hair;
         return $this;
     }
 

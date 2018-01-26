@@ -39,6 +39,31 @@ class Partner
     private $logoFile;
 
     /**
+     * @ORM\Column(type="boolean", length=150, options={"default" : false})
+     */
+    private $isActive;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $sector;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $message;
+
+    /**
      * @var \DateTime $created
      *
      * @ORM\Column(type="datetime")
@@ -55,6 +80,7 @@ class Partner
     public function __construct()
     {
         $this->updated = new \DateTime("now");
+        $this->isActive = false;
     }
 
     /**
@@ -221,6 +247,91 @@ class Partner
     public function setMedia($media)
     {
         $this->media = $media;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSector()
+    {
+        return $this->sector;
+    }
+
+    /**
+     * @param mixed $sector
+     */
+    public function setSector($sector)
+    {
+        $this->sector = $sector;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param mixed $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
         return $this;
     }
 }

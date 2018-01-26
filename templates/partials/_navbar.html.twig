@@ -61,6 +61,23 @@
                     Inscription
                 </a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link
+                    dropdown-toggle
+                    {% if
+                (app.request.attributes.get('_route') == 'partner_2018' or
+                app.request.attributes.get('_route') == 'become_partner')
+                %}
+                    active
+                    {% endif %}"
+                   href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Partenariat
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('partner_2018') }}">Nos partenaires 2018</a>
+                    <a class="dropdown-item" href="{{ path('become_partner') }}">Devenir partenaire</a>
+                </div>
+            </li>
             <li class="nav-item">
                 <a href="{{ path('contact') }}"
                    class="nav-link

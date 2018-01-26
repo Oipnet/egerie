@@ -76,12 +76,6 @@ class CandidateType extends AbstractType
                     return $eye ? $eye->getShortCode(): '';
                 }
             ])
-            ->add('hair', EntityType::class, [
-                'class' =>  Hair::class,
-                'choice_value' => function(Hair $hair = null) {
-                    return $hair ? $hair->getShortCode(): '';
-                }
-            ])
             ->add('size', IntegerType::class, [
                 'attr' => [
                     'placeholder' => 'Taille'

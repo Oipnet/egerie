@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container heading egerie">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Partenaires 2018</h2>
+                <div class="row">
+                    {% for partner in partners %}
+                        <div class="col-md-3 col-sm-6">
+                            <figure>
+                                <a href="{{ partner.site }}" target="_blank">
+                                    <img src="{{ asset('uploads/') ~ partner.logo }}" alt="" class="img-fluid">
+                                    <p>{{ partner.name }}</p>
+                                </a>
+                            </figure>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
